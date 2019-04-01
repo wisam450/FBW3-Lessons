@@ -1,0 +1,42 @@
+#firstp{
+    color:lightblue;
+    font-size:19px;
+    font-weight: bold;
+}
+body{
+    /* background-color: lightgreen; */
+}
+mark{
+    
+}
+img{
+    width:200px;
+    height: 200px;
+}
+#javascript img{
+    width:25%;
+    height:25%;
+    float:left;
+    margin-right:10px;    
+}
+#javascript{
+    text-align: justify;
+    float:right;
+    color:darkblue;
+    font-size: 16px;
+    font-family:serif;       
+}
+.mytable{
+    border:1px solid black;
+    width:100%;
+    text-align: center;
+    border-radius: 2px;
+}
+.mytable td,.mytable th{
+    border:1px solid gray;
+    border-radius: 2px;
+    width: 20%;
+}
+.mytable td span{
+   border:1px solid green;
+}
