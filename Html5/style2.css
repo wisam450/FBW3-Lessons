@@ -2,10 +2,108 @@
     box-sizing: border-box;
 }
 body{    
-    background-color: lightgoldenrodyellow;
+      width: 100%;    
+      background-color: lightgoldenrodyellow;
+}
+#main{
+ 
+max-width: 50%;
+margin: 0 auto;
+}
+
+header{
+    width: 100%;    
+    border: 1px solid darkgoldenrod;
+    position: relative;    
+}
+#main_title{
+    padding: 10px;
+}
+header h1{
+    font-weight: normal;
+}
+header h2{
+    font-weight: normal;
+    margin-top:0px;
+}
+header h1,#logo{
+display: inline-block;
+margin-bottom: 0px;    
+}
+nav{
+    position: absolute;
+   bottom:10px;
+    right: 20px;   
+}
+nav a{
+    padding:10px;
+    color: black;
+    font-size:20px;
+    text-decoration: none;
+}
+nav a:hover{
+    color:#760001;
+}
+#banner_image{
+    height: 200px;
+    background: url('img/banner_image.jpg') ;
+    position: relative;
     
+    border: 1px solid darkgoldenrod;
+    margin-top:15px;  
+    margin-bottom: 25px;  
+}
+#banner_description{
+    position: absolute;
+    bottom: 0;
+    color: white;
+    width:100%;
+    height: 36px;
+    background-color: rgba(24,24,24,0.8);
+    padding-top: 10px;    
+    padding-left:6px;   
+}
+.red_button{
+   position: absolute;
+   bottom: 5px;
+   right:5px;
+   border:1px solid red;
+   border-radius:5px;
+   color:white; 
+   text-decoration: none;
+   background:red;
+   padding: 3px;
+   
+}
+article{
+    width:60%;
     
 }
+#logo2{
+    vertical-align: middle;
+}
+aside{
+    width:40%;
+    color: white;
+    background-color: #706b64;
+    
+}
+article,aside{
+    float: left;
+    border: 1px solid darkgoldenrod;
+    text-align: justify;
+    padding: 10px;
+}
+footer{
+    width:100%;
+    display: inline-block;
+    border:3px solid darkgoldenrod;
+}
+#tweet, #my_pictures ,#my_friends{
+    float: left;
+    width:33%;
+}
+
 /* #mydiv{
     width: 30%;
     background-color: lightblue;
@@ -34,60 +132,3 @@ body{
      left: 0;
      right: 0;     
 } */
-header{
-    width: 100%;
-    height: 200px;
-    border: 1px solid darkgoldenrod;
-    position: relative;
-    
-}
-header h1,#logo{
-display: inline-block;    
-}
-nav{
-    position: absolute;
-   bottom:10px;
-    right: 20px;   
-}
-nav a{
-    padding:10px;
-    color: black;
-    font-size:17px;
-    text-decoration: none;
-}
-nav a:hover{
-    color:#760001;
-}
-#banner_image{
-    height: 200px;
-    width: 100%;
-    border: 1px solid darkgoldenrod;
-    margin-top:15px;  
-    margin-bottom: 15px;  
-}
-article{
-    width:60%;
-    
-}
-aside{
-    width:40%;
-    color: white;
-    background-color: #706b64;
-    
-}
-article,aside{
-    float: left;
-    border: 1px solid darkgoldenrod;
-    text-align: justify;
-    padding: 10px;
-}
-footer{
-    width:100%;
-    display: inline-block;
-    border:3px solid darkgoldenrod;
-}
-#tweet, #my_pictures ,#my_friends{
-    float: left;
-    width:33%;
-}
-
