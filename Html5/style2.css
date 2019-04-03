@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+body{    
+    background-color: lightgoldenrodyellow;
+    
+    
+}
+/* #mydiv{
+    width: 30%;
+    background-color: lightblue;
+    height:300px;
+    margin:0 auto;
+}
+#div1{
+    width: 100%;
+    padding: 40px;
+    background: yellow;    
+}
+#div2{
+    width:100px;
+    height: 100px;
+    background: green;
+   margin: 0 auto;    
+}
+#header{
+    width:50%;
+    height: 500px;
+    background: lightgray;
+    position: absolute;
+     margin:auto;
+     top: 0;     
+     bottom: 0;
+     left: 0;
+     right: 0;     
+} */
+header{
+    width: 100%;
+    height: 200px;
+    border: 1px solid darkgoldenrod;
+    position: relative;
+    
+}
+header h1,#logo{
+display: inline-block;    
+}
+nav{
+    position: absolute;
+   bottom:10px;
+    right: 20px;   
+}
+nav a{
+    padding:10px;
+    color: black;
+    font-size:17px;
+    text-decoration: none;
+}
+nav a:hover{
+    color:#760001;
+}
+#banner_image{
+    height: 200px;
+    width: 100%;
+    border: 1px solid darkgoldenrod;
+    margin-top:15px;  
+    margin-bottom: 15px;  
+}
+article{
+    width:60%;
+    
+}
+aside{
+    width:40%;
+    color: white;
+    background-color: #706b64;
+    
+}
+article,aside{
+    float: left;
+    border: 1px solid darkgoldenrod;
+    text-align: justify;
+    padding: 10px;
+}
+footer{
+    width:100%;
+    display: inline-block;
+    border:3px solid darkgoldenrod;
+}
+#tweet, #my_pictures ,#my_friends{
+    float: left;
+    width:33%;
+}
+
