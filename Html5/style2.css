@@ -47,12 +47,10 @@ nav a:hover{
     color:#760001;
 }
 #banner_image{
-    height: 200px;
-  
+    height: 200px;  
     background: url('img/banner_image.jpg') no-repeat;
-   
-    position: relative;
-    
+    background-position: center center;
+    position: relative;    
     border: 1px solid darkgoldenrod;
     margin-top:15px;  
     margin-bottom: 25px;  
@@ -102,6 +100,7 @@ article,aside{
     float: left;    
     text-align: justify;
     padding: 10px;
+    display: inline-block;
 }
 #asideimg{
   display: block;
@@ -157,19 +156,43 @@ footer{
     color:#760001;
 }
 @media screen and (max-width:600px){
-
+    
     nav{
         position: relative;
         text-align: center;
+        bottom:0px;
+        right: 0px;
     }
-    nav a{
+    nav a, aside, article, #my_friends, #my_pictures, #tweet{
         display: block; 
-        width: 100%;   
+        width: 100%;       
+    }
+    #banner_image{
+        background-position: center center;   
+    }
+    #banner_description{      
+        height: auto;
+        
+    }
+    .red_button{
+        position: relative;
+        display: inline-block;
+        bottom: 0px;
+        right:0px;
+        text-align: center;
+
+    }
+
+    #my_pictures,#my_friends, #tweet{
+        text-align: center;
+        
     }
     #main_title{
         width:100%;
         text-align: center;
     }
+    
+   
 
 }
 
