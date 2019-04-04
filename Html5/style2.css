@@ -47,7 +47,9 @@ nav a:hover{
 }
 #banner_image{
     height: 200px;
-    background: url('img/banner_image.jpg') ;
+    background: url('img/banner_image.jpg') no-repeat;
+    background-size:contain;
+    background-position:center;
     position: relative;
     
     border: 1px solid darkgoldenrod;
@@ -93,6 +95,7 @@ aside{
 }
 aside h1{
     text-align: center;
+    
 }
 article,aside{
     float: left;    
