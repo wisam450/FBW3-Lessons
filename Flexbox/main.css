@@ -58,3 +58,31 @@ body{
         flex-direction: column-reverse;
     }
 }
+.rowimg{
+    display: -ms-flexbox; /* IE10 */
+    display:  flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+     
+}
+.rowimg img{
+   flex:25%;
+   margin-top:8px;
+   vertical-align: middle;
+}
+@media screen and (max-width:800px){
+    .rowimg img{
+        
+        flex:50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width:600px){
+    .rowimg img{
+        
+        flex:100%;
+        max-width: 100%;
+    }
+}
