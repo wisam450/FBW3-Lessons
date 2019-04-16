@@ -7,16 +7,19 @@ body{
 .row2{
     display: flex;
     flex-wrap:wrap;
-    flex-direction: row;
+    
     
 }
 .coulmn{
     flex:20%;
     max-width: 20%;
     padding-right:4px;
+    overflow: hidden;
+    height: auto;
 }
 .coulmn img{
     width: 100%;
+    max-width: 100%;
     margin-top:8px;
     vertical-align: middle;
 }
@@ -24,7 +27,11 @@ body{
     .coulmn{
         flex:50%;
         max-width: 50%;
+        flex-direction:column;
+        max-height: 100%;
+
     }
+    
 
 }
 @media screen and (max-width:600px){
