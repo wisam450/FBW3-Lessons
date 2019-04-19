@@ -4,7 +4,7 @@ body{
 .main{
     width:300px;
     text-shadow: 5px 5px 9px darkgoldenrod,2px 2px 5px red;
-    box-shadow: 10px 10px 5px rgb(178, 196, 247);
+    box-shadow: 10px 10px 5px rgb(178, 196, 247);                                                                                                                                                       dow: 10px 10px 5px rgb(178, 196, 247);
     /* transform: rotate(5deg); */
     /* transform:rotateX(180deg); */
     transform: scale(1,-2);
