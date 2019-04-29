@@ -18,14 +18,55 @@
     text-align: left; 
     font-size:1.3em;          
 }
+.container input[type="text"]{
+    background-color:white;
+    color:darkgoldenrod;
+    font-size:1.7em;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat:  no-repeat;
+    padding-left:45px;
+    transition: all linear 400ms;    
+
+}
+.container input[type="text"]:focus{
+    /* background: greenyellow; */
+    color:black;
+    font-weight: 300;
+    border: 2px solid darkblue;
+    width:60%;    
+}
+ 
+.container textarea{
+   padding: 20px 20px;;
+   resize:none;
+   font-size:1.7em;
+   color:orange;   
+}
+
 .container input:not([type='checkbox']),textarea,select{
     border-radius:20px;
     width:60%;
     box-sizing: border-box;
-    padding: 10px;     
+    /* padding: 10px;      */
 }
 .container input[type="submit"]{
-    font-size:1.2em;
+    font-size:1.6em;
+    background-color:aqua;
+    padding:10px 20px;
+    color:white;
+    font-weight: bold;
+    border:0;
+    text-transform: uppercase;
+
+}
+.container input[type="submit"]:hover{
+    background: aqua;
+    outline: none;
+    box-shadow: 0 4px #141313;
+     top: 2px;
+     color:gray;
+
 }
  
 .container input[type="radio"]{
