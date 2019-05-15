@@ -33,55 +33,70 @@
   }
 }
 @mixin tablet {
-    @media (min-width: 600px) {
-      & {
-        column-count: 2;
-      }
-      &:before {
-        content: "tablet";
-      }
+  @media (min-width: 600px) {
+    & {
+      column-count: 2;
+    }
+    &:before {
+      content: "tablet";
     }
   }
-  @mixin desktop{
-    @media (min-width: 900px) {
-        & {
-          column-count: 3;
-        }
-        &:before {
-          content: "desktop";
-        }
-      }
+}
+@mixin desktop {
+  @media (min-width: 900px) {
+    & {
+      column-count: 3;
+    }
+    &:before {
+      content: "desktop";
+    }
   }
+}
 
 $breakpoints: (
-    phone: 300px,
-    tablet: 600px,
-    desktop: 900px
+  phone: 300px,
+  tablet: 600px,
+  desktop: 900px
 );
 @mixin for-size($device) {
-    @if map-has-key($breakpoints, $device) {
-        @media (min-width: #{map-get($breakpoints, $device)}) {
-            @content;
-            &:before {
-                content: $device;
-            }
-        }
+  @if map-has-key($breakpoints, $device) {
+    @media (min-width: #{map-get($breakpoints, $device)}) {
+      @content;
+      &:before {
+        content: $device;
+      }
     }
+  }
 }
+
+$breakpoints-2: (
+  1: 300px,
+  2: 600px,
+  3: 900px
+);
+
+@mixin for-size-all {
+    @for $i from 1 through 3 {
+      @media (min-width: #{map-get($breakpoints-2, $i)}) {
+        column-count: $i;
+      }
+    }
+  }
+
 
 .header-title {
   font-size: 2rem;
   //@include phone();
   //@include tablet();
   //@include desktop();
-  @include for-size('phone') {
-      column-count: 1;
-  }
-  @include for-size('tablet') {
-      column-count: 2;
-  }
-  @include for-size('desktop') {
-      column-count: 3;
-  }
+//   @include for-size("phone") {
+//     column-count: 1;
+//   }
+//   @include for-size("tablet") {
+//     column-count: 2;
+//   }
+//   @include for-size("desktop") {
+//     column-count: 3;
+//   }
+    @include for-size-all();
 }
-
