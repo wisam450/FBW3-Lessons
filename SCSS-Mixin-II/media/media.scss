@@ -79,6 +79,7 @@ $breakpoints-2: (
     @for $i from 1 through 3 {
       @media (min-width: #{map-get($breakpoints-2, $i)}) {
         column-count: $i;
+        border: #{$i*10}px solid rgb($i*100-50,$i*100/2,$i*100-100);
       }
     }
   }
