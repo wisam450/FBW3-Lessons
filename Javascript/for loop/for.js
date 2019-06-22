@@ -25,3 +25,35 @@ for(i=0 ; i < colors.length ; i++)
 
 ////////////////////////////////////////////////////////////////77
 let student=[80,70,90,60,77,59];
+
+
+
+// for loop with array in js
+
+let veggieFood =["Apple","orange","kiwi","beans","potato","Banana"];
+veggieFood.push("chicken","tomato");
+for(let i=0; i< veggieFood.length; i++){
+  
+    if(veggieFood[i]=="chicken"){
+     
+     //alert(" oh nooo your food list is not veggie anymore");
+    break;
+    
+    }
+    //console.log(veggieFood[i]);
+    }
+/////////////////////////////////////////////////////////////////////////////////////
+// we delete the none Veggie item
+
+for(let i=0;i< veggieFood.length ; i++){
+
+    if(veggieFood[i]=="chicken"){
+        alert(" you have chicken and your list is not veggie");
+        veggieFood[i]="Lemon";
+        alert("we changed the chicken to Lemon thank you !!");
+    }
+    
+    console.log(veggieFood[i]);
+}
+
+
