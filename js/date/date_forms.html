@@ -15,9 +15,25 @@
     <button onclick="getTimeStamp()">Get Only Time</button>
     <!-- 2019.07.03 -->
     <button onclick="getOnlyDate()">Get Only Date</button>
+    <!-- Show the watches -->
+    <button onclick="showWatches()" style="background-color: cyan">Show watches</button>
     <p id="out"></p>
+    <p id="watches"></p>
 
     <script>
+        function prepareWatches() {
+            let d = new Date()
+            h = d.getHours();
+            m = d.getMinutes();
+            s = d.getSeconds();
+            mil = d.getMilliseconds();
+            watches = h + ":" + m + ":" + s + "." + mil;
+            document.getElementById("watches").innerHTML = watches;
+        }
+        function showWatches() {
+            setInterval(prepareWatches, 1); // 500 milliseconds
+        }
+
         function getOnlyDate() {
             let d = new Date();  
             let y = d.getFullYear();
