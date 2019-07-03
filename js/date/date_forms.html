@@ -10,17 +10,37 @@
 
     <button onclick="getCurrentDate()">Get Current Date</button>
     <!-- 12344555467 -->
-    <button onclick="getLinuxTime()">Get Current Date</button>
+    <button onclick="getUnixTime()">Get Unix Time</button>
     <!-- hh:mm:ss -->
-    <button onclick="getTimeStamp()">Get Current Date</button>
+    <button onclick="getTimeStamp()">Get Only Time</button>
     <!-- 2019.07.03 -->
-    <button onclick="getOnlyDate()">Get Current Date</button>
+    <button onclick="getOnlyDate()">Get Only Date</button>
     <p id="out"></p>
 
     <script>
-        // here getCurrentDate()  
+        function getOnlyDate() {
+            let d = new Date();  
+            let y = d.getFullYear();
+            let m = d.getMonth()+1;
+            let day = d.getDay();     
+            document.getElementById("out").innerHTML = y + "." + m + "." + day; 
+        }
+
+        function getTimeStamp() {
+            let d = new Date();
+            h = d.getHours(); // hh 
+            m = d.getMinutes(); // mm
+            s = d.getSeconds(); // ss
+            output = h + ":" + m + ":" + s;
+            document.getElementById("out").innerHTML = output;
+        }
+        function getUnixTime() {
+            let d = new Date();
+            unix_time = d.getTime();
+            document.getElementById("out").innerHTML = unix_time;
+        }
         function getCurrentDate() {
-            let d = new Date();       
+            let d = new Date();     
             document.getElementById("out").innerHTML = d;
         }
     </script>
