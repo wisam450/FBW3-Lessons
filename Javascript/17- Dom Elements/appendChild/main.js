@@ -28,6 +28,7 @@ for (i = 0; i < el.length; i++) {
 });
 // append child
 document.getElementById("btn2").addEventListener("click",function(){
+    
     addElement2();
     let el = document.getElementsByTagName("h1");
 
