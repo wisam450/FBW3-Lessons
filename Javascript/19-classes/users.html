@@ -48,7 +48,16 @@
             }
         }
         const a = new Admin("romal", "127.3.4.5", "Sportcars")
-        //class Owner extends Admin {}
+        class Owner extends Admin {
+            constructor(username, ip, category, ownerSince){
+                super(username, ip, category);
+                this.ownerSince = ownerSince;
+            }
+            getOwnerName() {
+                document.write(`This web page was crated by ${this.username}`);
+            }
+        }
+        const o = new Owner("BillGates", "9.9.9.9", "All", 20);
     </script>
     
 </body>
