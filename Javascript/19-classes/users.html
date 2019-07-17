@@ -13,6 +13,13 @@
             constructor(username, ip) {
                 this.username = username;
                 this.ip = ip;
+                this.startTime = new Date();
+            }
+            getActivityTime(){
+                let start = this.startTime.getTime();
+                let now = new Date();
+                now = now.getTime();
+                return (now - start) / 1000;
             }
             sayHello() {
                 if(this.isRejected()) {
@@ -20,9 +27,7 @@
                 } else {
                     alert(`Welcome back ${this.username}!`)
                 }
-                // if (rejected == false) {
-                // alert
-                //} else {alert} 
+                
             }
             isRejected() {
                 if(this.ip == "127.2.2.2") {
