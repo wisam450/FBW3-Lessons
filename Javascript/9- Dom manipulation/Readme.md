@@ -25,10 +25,9 @@
 
 #h1.style.color = "pink";
 
-///////////////////////////////////////////////////
 #One more example
 
-##SELECT the <body> and change its color every second
+SELECT the <body> and change its color every second
 
 let body = document.querySelector("body"); //SELECT
 let isBlue = false;
