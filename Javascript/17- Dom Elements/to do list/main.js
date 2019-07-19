@@ -13,7 +13,10 @@ function addToDo() {
 
         for (let i = 0; i < el.length; i++) {
             el[i].onclick=function () {
-                tasks.removeChild(this);
+                //tasks.removeChild(this);
+                this.remove();
+
+
 
             }
         }
