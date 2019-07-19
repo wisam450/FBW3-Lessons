@@ -17,15 +17,15 @@
 </html>
 
 ##The Process
-#SELECT an element and then MANIPULATE
+##SELECT an element and then MANIPULATE
 
-#SELECT the <h1> and save to a variable
+##SELECT the <h1> and save to a variable
 
-#let h1 = document.querySelector("h1");
+##let h1 = document.querySelector("h1");
 
-#h1.style.color = "pink";
+##h1.style.color = "pink";
 
-#One more example
+##One more example
 
 SELECT the <body> and change its color every second
 
