@@ -1,9 +1,9 @@
-##The DOM
-## Document Object Model
+###The DOM
+###Document Object Model
 **The , Object Model is the interface between your Javascript and HTML+CSS**
 
-#The browser turns every HTML tag into a Javascript object that we can manipulate
-#Everything is stored inside of the document object
+##The browser turns every HTML tag into a Javascript object that we can manipulate
+##Everything is stored inside of the document object
 
 <!DOCTYPE html>
 <html>
@@ -17,18 +17,17 @@
 </html>
 
 ##The Process
-#SELECT an element and then MANIPULATE
+##SELECT an element and then MANIPULATE
 
-#SELECT the <h1> and save to a variable
+##SELECT the <h1> and save to a variable
 
-#let h1 = document.querySelector("h1");
+##let h1 = document.querySelector("h1");
 
-#h1.style.color = "pink";
+##h1.style.color = "pink";
 
-///////////////////////////////////////////////////
-#One more example
+##One more example
 
-##SELECT the <body> and change its color every second
+SELECT the <body> and change its color every second
 
 let body = document.querySelector("body"); //SELECT
 let isBlue = false;
