@@ -124,7 +124,7 @@ console.log("population  is: " + allpopulation);
 let numbers = [8,2,10,20];
 
 function sumNumbers(sum ,element){
-    return sum - element ;
+    return sum + element ;
 }
 
 let reducedNumers = numbers.reduce(sumNumbers); // the sum : 40 
@@ -195,7 +195,6 @@ function matLength(material){
     return material.length;
 }
 console.log(materials.map(matLength));
-
 
 
 
