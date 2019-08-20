@@ -147,14 +147,28 @@ function addItem(e) {
     //delButton.appendChild(document.createTextNode("X"));
     //append the del Button to the li 
     li.appendChild(delButton);
+
+    // we add here the notification div 
+    let infoDiv=document.createElement("div"); // create the info div
+    infoDiv.className="alert alert-success"; // add the bootstrap class 
+    infoDiv.textContent="the item has been added"; // add the text
+    let father = document.getElementById("main"); // the father div    
+    let heading2=document.querySelector(".title"); // the h2 
+    father.insertBefore(infoDiv,heading2); // inserting the div before the h2
+    setTimeout(function(){  infoDiv.remove();   },2000);
 }
+
 
 ul.addEventListener("click", removeItem);
 function removeItem(e) {
     //  console.log(e.target.className);
-
+    
     if (e.target.className == "btn btn-danger btn-sm float-right delete") {
-        ul.removeChild(e.target.parentElement);
+        if(confirm("are you sur!!!")){
+            ul.removeChild(e.target.parentElement);
+        
+        }
+        
     }
     console.log(e.target.classList);
 
