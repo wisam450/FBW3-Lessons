@@ -11,6 +11,8 @@ function loadeventListner(){
     // remove task event 
     taskList.addEventListener("click",removeTask);
 
+    document.addEventListener("DOMContentLoaded",getTasks);
+
 } 
 
 
@@ -41,7 +43,11 @@ function addTask(e){
 
 function removeTask(e){
     if(e.target.classList.contains("delete")){
+        // remove from html
         e.target.parentElement.remove();
+        //remove from localStorage
+        removeFromLocalStorage(e.target.parentElement);
+        
     }
 
 }
@@ -85,6 +91,25 @@ function getTasks(){
        });
 
     }
+
+}
+function removeFromLocalStorage(taskItem){
+    let tasks;
+    if(localStorage.getItem("tasks")===null){
+        task = [];
+    }
+    else {
+        tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
+    tasks.forEach( function(task,index){
+        if(taskItem.firstChild.textContent === task){
+            tasks.splice(index,1);
+
+        }
+        
+
+    });
+    localStorage.setItem("tasks",JSON.stringify(tasks));
 
 }
 
