@@ -40,6 +40,11 @@ function clearInputs(){
     fInput.value="";
     sInput.value="";
 }
+// the first option in select 
+
+fInput.addEventListener("keyup",cmConverter);            
+labels[1].innerHTML="from CM";
+labels[2].innerHTML="from Inch";
 
 // the select onchange 
 function unitSelect(){
