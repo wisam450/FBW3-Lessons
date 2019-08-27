@@ -16,19 +16,22 @@ function loadeventListner(){
 
 
 
-
-function addTask(e){
-   e.preventDefault();
-   if(taskInput.value !=""){   
+function createH5 (text){
     let h5 = document.createElement("h5");
-    let taskText = document.createTextNode(taskInput.value);
+    let taskText = document.createTextNode(text);
     h5.appendChild(taskText);
-    taskList.appendChild(h5);
-   
     let delBtn = document.createElement("button");
     delBtn.innerText="X";
     delBtn.className="delete btn btn-danger ml-5";
     h5.appendChild(delBtn);
+    taskList.appendChild(h5);
+
+}
+
+function addTask(e){
+   e.preventDefault();
+   if(taskInput.value !=""){ 
+    createH5(taskInput.value);   
     storeToLocalStorage(taskInput.value);
     
 }
@@ -77,9 +80,7 @@ function getTasks(){
        //console.log(tasks);
        tasks.forEach( function(storedTask){ 
         //console.log(storedTask);
-        let h5 = document.createElement("h5");
-        h5.appendChild(document.createTextNode(storedTask));
-        taskList.appendChild(h5);        
+        createH5(storedTask);
 
        });
 
