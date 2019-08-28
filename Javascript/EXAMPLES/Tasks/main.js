@@ -96,7 +96,7 @@ function getTasks(){
 function removeFromLocalStorage(taskItem){
     let tasks;
     if(localStorage.getItem("tasks")===null){
-        task = [];
+        tasks = [];
     }
     else {
         tasks = JSON.parse(localStorage.getItem("tasks"));
