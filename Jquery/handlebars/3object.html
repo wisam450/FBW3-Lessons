@@ -13,12 +13,14 @@
 <body>
 
     <script id="hb-objects" type="text/x-handlebars-template">
-        <div class="entry">
+        <div class="container">
             <h1>{{title}}</h1>
-            <h2>{{author.name}}</h2>
-            <div class="body">
-                {{text}}
+            {{#each posts}}
+            <h2>{{this.author.name}}</h2>
+            <div class="lead">
+                {{this.text}}
             </div>
+            {{/each}}
         </div>
     </script>
 
@@ -26,10 +28,15 @@
         // Now define your name and your occupation
         var context = {
             "title": "Vanilla Blog",
-            "author": {
-                "name": "Boris"
-            },
-            "text": "Hi there! It's my first post"
+            "posts": [
+                {
+                    "author": {"name": "Boris"},
+                    "text": "It's first post of Boris"},
+                {
+                    "author": {"name": "Sergey"},
+                    "text": "It's first post of Sergey"}
+                    ]
+            
         };
 
         // jQuery: Retrieve the template data from the HTML
