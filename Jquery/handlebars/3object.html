@@ -17,6 +17,7 @@
             <h1>{{title}}</h1>
             {{#each posts}}
             <h2>{{this.author.name}}</h2>
+            <img src="https://i.pravatar.cc/150?img={{imageId}}" class="img-thumbnail">
             <div class="lead">
                 {{this.text}}
             </div>
@@ -31,10 +32,12 @@
             "posts": [
                 {
                     "author": {"name": "Boris"},
-                    "text": "It's first post of Boris"},
+                    "text": "It's first post of Boris",
+                    "imageId": "2"},
                 {
                     "author": {"name": "Sergey"},
-                    "text": "It's first post of Sergey"}
+                    "text": "It's first post of Sergey",
+                    "imageId": "3"}
                     ]
             
         };
