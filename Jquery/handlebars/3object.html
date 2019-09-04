@@ -15,13 +15,17 @@
     <script id="hb-objects" type="text/x-handlebars-template">
         <div class="container">
             <h1>{{title}}</h1>
-            {{#each posts}}
-            <h2>{{this.author.name}}</h2>
-            <img src="https://i.pravatar.cc/150?img={{imageId}}" class="img-thumbnail">
-            <div class="lead">
-                {{this.text}}
+            <div class="card-deck">
+                {{#each posts}}
+                <div class="card">
+                <h2>{{this.author.name}}</h2>
+                <img src="https://i.pravatar.cc/150?img={{imageId}}" class="card-img-top">
+                <p class="lead">
+                    {{this.text}}
+                </p>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
         </div>
     </script>
 
@@ -31,12 +35,16 @@
             "title": "Vanilla Blog",
             "posts": [
                 {
+                    "author": {"name": "Lana"},
+                    "text": " छपाई और अक्षर योजन उद्योग का एक साधारण डमी पाठ है. Lorem Ipsum सन १५०० के बाद से अभी तक इस उद्योग का मानक डमी पाठ मन गया, जब एक अज्ञात मुद्रक ने नमूना लेकर एक नमूना किताब बनाई. यह न केवल पाँच सदियों से जीवित रहा बल्कि इसने इलेक्ट्रॉनिक मीडिया में छलांग लगाने के बाद भी मूलतः अपरिवर्तित रहा. यह 1960 के दशक में Letraset Lorem Ipsum अंश युक्त पत्र के रिलीज के साथ लोकप्रिय हुआ, और हाल ही में Aldus PageMaker Lorem Ipsum के संस्करणों सहित तरह डेस्कटॉप प्रकाशन सॉफ्टवेयर के साथ अधिक प्रचलित हुआ.",
+                    "imageId": "1"},
+                {
                     "author": {"name": "Boris"},
-                    "text": "It's first post of Boris",
+                    "text": "ن النص، وإذا قمت بإدخال lorem ipsum في أي محرك بحث ستظهر العديد من المواق",
                     "imageId": "2"},
                 {
                     "author": {"name": "Sergey"},
-                    "text": "It's first post of Sergey",
+                    "text": "Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.",
                     "imageId": "3"}
                     ]
             
