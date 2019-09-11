@@ -1,0 +1,35 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(229, 238, 231)
+}
+
+
+input[type='text'],
+input[type='password'],
+input[type='date'],
+input[type='number'],
+label,select
+{
+    width:100%;
+    padding: 15px;
+    display: inline-block;
+    background:lavenderblush;
+    border:none;
+    margin:5px 0 2px 0;
+}
+.registerBtn{
+    background: lightcoral;
+    color: white;
+    padding: 16px 20px;
+    border:none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.registerBtn:hover{
+    opacity: 1;
+}
+label{
+    font-weight: bold;
+    background: white;
+    
+}
