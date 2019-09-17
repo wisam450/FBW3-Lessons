@@ -14,7 +14,7 @@
 
 8- we create webpack.config.js in the project folder
 
-9- we add the module rules and the plugens to webpack.config.js 
+9- we add the module rules and the plugins to webpack.config.js 
 
 10- we create index.html in src folder
 
