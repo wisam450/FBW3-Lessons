@@ -32,13 +32,13 @@ function getPosts() {
     }, 1000);
 }
 createPost({ title: "post three", body: "this is the post three" })
-    .then(function(yes){
-        console.log(yes);
+    .then(function(success){
+        console.log(success);
         getPosts();
 
     })
-    .catch(function (serverError) {
-        console.log(serverError);
+    .catch(function (error) {
+        console.log(error);
 
     })
 
