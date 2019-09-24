@@ -7,7 +7,7 @@ btn2.addEventListener("click",getJson);
 btn3.addEventListener("click",getExternal);
 
 
-// Get Local Text file data
+// Get Local Text file data 
 function getText(){
     fetch('test.txt')
     .then(function (res) {

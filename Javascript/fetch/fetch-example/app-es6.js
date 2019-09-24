@@ -2,23 +2,21 @@ let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
 
-btn1.addEventListener("click",getText);
-btn2.addEventListener("click",getJson);
-btn3.addEventListener("click",getExternal);
+
 
 
 // Get Local Text file data
-function getText(){
+let  getText= () =>{
     fetch('test.txt')
-    .then(function (res) {
+    .then( res =>  {
         return  res.text();
         
     })
-    .then(function(info){
+    .then(info => {
         console.log(info);
         document.getElementById("output").innerHTML = info;
     })
-    .catch(function (err) {
+    .catch( err => {
         console.log(err);
         
     })
@@ -26,16 +24,15 @@ function getText(){
 }
 
 // Get Local Json file data
-function getJson(){
+let  getJson = () => {
     fetch('posts.json')
-    .then(function (res) {
-        return  res.json();
-        
+    .then( res => {
+        return  res.json();        
     })
-    .then(function(data){
+    .then(data => {
         console.log(data);
        let output='';
-        data.forEach(function(post){
+        data.forEach(post => {
             output += `<li> ${post.title} : ${post.body}  </li>  `;
 
         })
@@ -61,7 +58,7 @@ function getExternal(){
         console.log(data);
        let output='';
         data.forEach(function(user){
-            output += `<li> ${user.login} : ${user.html_url}  </li>  `;
+            output += `<li>  ${user.login} : <a href=" ${user.html_url} " > link </a> </li>  `;
 
         })
 
@@ -75,3 +72,6 @@ function getExternal(){
 }
 
 
+btn1.addEventListener("click",getText);
+btn2.addEventListener("click",getJson);
+btn3.addEventListener("click",getExternal);
