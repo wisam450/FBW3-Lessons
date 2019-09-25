@@ -25,11 +25,7 @@ app.get('/state', function(req, res) {
 });
 
 app.get('/states', function(req, res) {
-    var states = [{
-        'state': 'Hamburg',
-        'capital': 'Hamburg'
-    }] 
-    res.send(states);
+    res.sendFile('states.json', { root: __dirname });
 });
 
 app.get('/hamburg.png', function(req, res) {
