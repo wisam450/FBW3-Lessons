@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputTodo from './inputTodo';
-import ListTodo from './listTodo';
+import ListTodo ,{removeTodoList} from './listTodo';
 import './App.scss';
 
 //  let todoItems = [];
@@ -32,6 +32,18 @@ class TodoList extends Component {
     console.log(this.state.todoList);
 
   }
+  removeTodoList=(item) =>{
+   // alert("you want to delete ?");
+    let myList = this.state.todoList;
+    myList.splice(item,1);
+
+    this.setState({
+      todoList : myList
+    })
+    //console.log(myList)
+        
+}
+ 
 
   render() {
     return (
@@ -42,7 +54,8 @@ class TodoList extends Component {
         <button onClick={() => this.addToList()} > add to the list</button>
 
         {/* the List component */}
-        <ListTodo list={this.state.todoList} />
+        <ListTodo list={this.state.todoList} 
+           remove={(item)=>this.removeTodoList(item)}/>
       </div>
     )
 

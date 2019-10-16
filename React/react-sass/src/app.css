@@ -1,0 +1,21 @@
+body {
+  background-repeat: no-repeat;
+  background: url("./images/hamburg.jpeg");
+  background-size: cover;
+  color: darkblue;
+}
+
+div {
+  text-align: center;
+}
+
+div h1 {
+  font-family: Verdana;
+  color: red;
+}
+
+div img {
+  width: 400px;
+  height: 500px;
+}
+/*# sourceMappingURL=app.css.map */
