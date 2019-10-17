@@ -22,8 +22,12 @@ export default class App extends Component {
   
  }
  showHandler(){
-   this.setState(prevState => ({show : !prevState.show}));
-   alert(this.state.show);
+   // we change show in state from true to false or from false to true
+   this.setState({   show:!this.state.show    });
+
+   // here we will get the previous State and we change it to the opposit
+   //this.setState( (oldState)=> ({show : !oldState.show }) );
+   
 
  }
  
@@ -37,7 +41,7 @@ export default class App extends Component {
         <div className="wrapper">
           {   
             
-          this.state.show ? <TitleHeader newTitle ={this.state.value} />  : null         
+          this.state.show ? <TitleHeader  newTitle ={this.state.value} />  : null         
             
           }
         

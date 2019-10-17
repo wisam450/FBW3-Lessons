@@ -40,6 +40,9 @@ export default class TitleHeader extends Component {
        let header = document.querySelector('h1');
        header.style.background='pink';
    }
+   componentWillUnmount(){
+       alert('Component will unmount Good By !!!!');
+   }
 
     render() {
         return (
