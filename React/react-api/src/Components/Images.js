@@ -52,7 +52,7 @@ export default class Images extends Component {
             }
             return(
                 <div key={index} style={style}>
-                    <img className="imgsearch" src={item.previewURL}/>
+                    <img alt="" className="imgsearch" src={item.previewURL}/>
                 </div>
             )
         })}

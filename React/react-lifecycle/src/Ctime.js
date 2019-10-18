@@ -20,8 +20,8 @@ export default class Ctime extends Component {
 
     render() {
         return (
-            <div>
-                <h2>{this.state.time.toLocaleTimeString("de-DE",
+            <div className="App">
+                <h2><span>the time in  {this.state.timezone} is : </span>{this.state.time.toLocaleTimeString("de-DE",
                 {timeZone: this.state.timezone})}</h2>
             </div>
         )

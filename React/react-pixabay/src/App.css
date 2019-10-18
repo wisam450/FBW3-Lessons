@@ -1,23 +1,16 @@
 .App {
   text-align: center;
-  border: 1px solid rgb(27, 122, 27);
-  border-radius:15px;
-  width:50%;
-  margin:0 auto;
-  margin-top:5px;
-  background: rgba(233, 224, 149, 0.5)
-  
-}
-.App span{
-  color:lightgreen;
-  font-weight: bold;
-
 }
 
 .App-logo {
   height: 40vmin;
 }
-
+.load-div{
+  background-image: url(Spinner.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 20vh;
+ }
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
