@@ -6,8 +6,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './Home.js';
+import About from './About.js';
+import Dashboard from './Dashboard.js';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <Router>
@@ -50,29 +53,4 @@ class App extends Component {
   }
 }
 
-export default App;
-
 // TODO: place Home, About and Dashboard in separate modules
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
