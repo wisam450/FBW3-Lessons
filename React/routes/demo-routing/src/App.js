@@ -9,6 +9,7 @@ import {
 import Home from './Home.js';
 import About from './About.js';
 import Dashboard from './Dashboard.js';
+import Topics from './Topics.js';
 
 export default class App extends Component {
   render() {
@@ -24,6 +25,9 @@ export default class App extends Component {
           </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
           </li>
         </ul>
 
@@ -45,6 +49,9 @@ export default class App extends Component {
           </Route>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route path="/topics">
+            <Topics />
           </Route>
         </Switch>
       </div>
