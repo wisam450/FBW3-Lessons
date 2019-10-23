@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <Router>
       <div>
-        <ul>
+        <ul className="topnav">
           <li>
             <Link to="/home">Home</Link>
           </li>

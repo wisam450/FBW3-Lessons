@@ -13,8 +13,7 @@ export default function Topics() {
 
     return (
       <div>
-        <h2>Topics</h2>
-        <ul>
+        <ul className="topics">
             <li>
                 <Link to={`${url}/link1`}> Link1</Link>
             </li>
