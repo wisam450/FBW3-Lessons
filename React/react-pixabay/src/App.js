@@ -37,6 +37,7 @@ export default class App extends Component {
   }
 
   loadImage = () => {
+    console.log('test')
     let newImages = <Images url={this.state.url} />;
     this.setState({loadedImages:newImages,letSearch:false})
   }

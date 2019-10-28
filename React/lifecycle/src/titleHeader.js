@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
 export default class TitleHeader extends Component {
+    // mounting : 1 
    constructor(props) {
        super(props)
    
        this.state = {
             title :''
        }
+    
    }
    static getDerivedStateFromProps(props, state){
        console.log('sync props to state');

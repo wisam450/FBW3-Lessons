@@ -22,12 +22,7 @@ body{
   border-radius: 10px;
 }
 
-.load-div{
-  background-image: url(load.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 20vh;
-}
+np
 
 .imageContainer{
   width: 80%;

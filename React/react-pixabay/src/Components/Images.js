@@ -22,7 +22,6 @@ export default class Images extends Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-
         const url = this.state.url;
         console.log(url)
         fetch(url)
@@ -61,7 +60,7 @@ export default class Images extends Component {
                 }
                 return(
                     <div key={index} style={style}>
-                        <a href={item.largeImageURL} target="_blank">
+                        <a href={item.largeImageURL} rel="noopener noreferrer"  target="_blank">
                           <img src={item.previewURL} alt={item.tags}/>
                         </a>
                     </div>

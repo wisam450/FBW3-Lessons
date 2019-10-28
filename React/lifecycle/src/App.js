@@ -14,7 +14,7 @@ export default class App extends Component {
        { id : 2 , title: 'second item' },
        { id : 3 , title: 'third item' }
      ]
-      
+     
    }
  }
  changeTitle = (title) =>{
