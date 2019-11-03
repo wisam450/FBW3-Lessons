@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link as RLink } from 'react-router-dom';
+import { NavLink as RLink } from 'react-router-dom';
 
 import {
     Navbar,
