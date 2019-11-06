@@ -10,6 +10,7 @@ function counter (state = 0, action){
             return state + 1;
         case 'DECREMENT':
             return state - 1;
+        // 'ODD_INCREMENT', state + 2
         default:
             return state;
     }
@@ -25,5 +26,27 @@ function printState() {
 store.subscribe(printState);
 
 // actions
-store.dispatch({type: 'INCREMENT'})
+store.dispatch({type: 'INCREMENT'});
+store.dispatch({type: 'INCREMENT'});
+store.dispatch({type: 'INCREMENT'});
+store.dispatch({type: 'INCREMENT'});
+store.dispatch({type: 'INCREMENT'});
+
+store.dispatch({type: 'DECREMENT'});
+store.dispatch({type: 'DECREMENT'});
+
+store.dispatch({type: null});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
