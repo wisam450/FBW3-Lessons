@@ -2,8 +2,6 @@ import React from 'react';
 import './app.scss';
 // import './App.css';
 import img from './images/person.jpeg';
-
-
 function App() {
   return (
     <div >
