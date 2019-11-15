@@ -1,6 +1,6 @@
 # UI Basics : Layout
 ​
-##  CSS Pseudo Classes           
+## CSS Pseudo Classes           
 ​
 ​
 
@@ -31,41 +31,7 @@ Anchor Pseudo-classes
 ​
 ```css
 /* unvisited link */
-a:link{48
-
-​
-
-49
-
-/* selected link */
-
-50
-
- a:active{
-
-51
-
-color:orange;
-
-52
-
-font-size:33px;
-
-53
-
- } 
-
-54
-
-```
-
-55
-
-•
-
-56
-
-​
+a:link{
     color:red;
 }
 /* mouse over link */
