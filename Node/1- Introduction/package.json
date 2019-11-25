@@ -6,10 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mansoue Tumeh",
+  "author": "Mansour Tumeh",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.4.1",
     "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "jquery": "^3.4.1",
+    "nodemon": "^1.19.4"
   }
 }
