@@ -1,6 +1,7 @@
 const https = require('https');
 
-https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
+// 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+https.get('https://jsonplaceholder.typicode.com/todos/1', (resp) => {
     let data = '';
 
     // receive a chunk of data
