@@ -50,4 +50,17 @@ router.post('/', function (req, res) {
   res.status(200).send('database has been updated');
 });
 
+router.post('/delete', function (req, res) {
+  let id = parseInt(req.body.id);
+  console.log(id);
+  console.log(typeof id);
+  
+  db.get('records').remove({id: id}).write();
+  res.status(200).send('you have removed item ' + id);
+});
+
+
+
+
+
 module.exports = router;

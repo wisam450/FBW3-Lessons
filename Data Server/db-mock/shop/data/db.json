@@ -11,15 +11,15 @@
       "price": 379.99
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "Samsung Phone Blue",
       "price": "100.00"
     },
     {
-      "id": 4,
-      "title": "Samsung Phone Blue",
-      "price": "100.00"
+      "id": 5,
+      "title": "Apple iPhone XR 6,1\" 64 GB Smartphone (15,5 cm/6,1 Zoll, 64 GB Speicherplatz, 12 MP Kamera, True Tone Display, Fettabweisende Beschichtung)",
+      "price": "699.99"
     }
   ],
-  "count": 4
+  "count": 5
 }
