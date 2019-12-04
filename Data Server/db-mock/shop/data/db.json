@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "id": 0,
+      "title": "Samsung Galaxy S10+ Smartphone (16,35 cm/6,4 Zoll, 512 GB Speicherplatz, 12 MP Kamera)",
+      "price": 899.99
+    },
+    {
+      "id": 1,
+      "title": "Huawei Mate20 Smartphone (16,59 cm/6,5 Zoll, 128 GB Speicherplatz, 12 MP Kamera)",
+      "price": 379.99
+    },
+    {
+      "id": 3,
+      "title": "Samsung Phone Blue",
+      "price": "100.00"
+    },
+    {
+      "id": 4,
+      "title": "Samsung Phone Blue",
+      "price": "100.00"
+    }
+  ],
+  "count": 4
+}
