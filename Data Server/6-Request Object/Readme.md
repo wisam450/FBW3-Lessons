@@ -11,7 +11,9 @@ There are three primary ways for Express.js apps to receive user-supplied data: 
  
 
   ### `req.params`
- 
+ se(express.static(path.join(__dirname, 'public')));
+se(express.static(path.join(__dirname, 'public')));
+
 ``` javascript
     
 // GET https://localhost:3000/user/211
