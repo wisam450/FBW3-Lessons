@@ -10,6 +10,9 @@ const logger = require('./middleware/logger');
 // our middleware
 app.use(logger);
 
+// Body Parser middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 
 app.get('/about',(req,res)=>{
     res.sendFile(path.join(__dirname,'public','about.html'));

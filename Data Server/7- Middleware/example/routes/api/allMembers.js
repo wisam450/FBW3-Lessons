@@ -22,4 +22,17 @@ router.get('/:id' ,(req,res) => {
     }
   
 } );
+
+// create member 
+router.post('/',(req,res)=> {
+    //res.send(req.body);
+    const newMmber ={
+        id :555,
+        name:req.body.name,
+        email:req.body.email,
+        status:req.body.status
+    };
+    res.send(newMmber)
+    //members.push(newMmber);
+})
 module.exports = router
