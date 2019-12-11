@@ -3,9 +3,12 @@ const path = require('path');
 const app = express();
 const members = require('./members');
 const logger = require('./middleware/logger');
+const cors = require('cors');
 
+app.use(cors({
+    origin:'*'
+}))
 
-//somthing
 
 // our middleware
 app.use(logger);
