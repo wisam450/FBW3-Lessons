@@ -1,3 +1,3 @@
-fetch('http://localhost:5001/api/members')
+fetch('http://localhost:5005/api/members')
   .then(response => response.json())
   .then(json => console.log(json))
