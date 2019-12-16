@@ -1,5 +1,6 @@
 # Database (DB)
 A database is a collection of information that is organized so that it can be easily accessed, managed and updated. Computer databases typically contain aggregations of data records or files  containing information about sales transactions or interactions with specific customers.
+
 ![enter image description here](https://techcrunch.com/wp-content/uploads/2016/02/cleandatabase.jpg?w=730&crop=1)
 An online telephone Book would definitely use database to store data pertaining to people, phone numbers, other contact details, etc.
 
