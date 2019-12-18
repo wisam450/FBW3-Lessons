@@ -30,4 +30,11 @@ MongoClient.connect(url, function(err, db) {
         console.log("2nd document inserted");
         db.close();
     }); 
+
+    let myobj3 = {name: "zalando", address: "Hamburg"};
+    mydb.collection("customers").insertOne(myobj3, function(err, res) {
+        if (err) throw err;
+        console.log("3rd document inserted");
+        db.close();
+    });
 });
