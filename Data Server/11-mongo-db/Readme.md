@@ -59,6 +59,11 @@ Now you can import the mongodb package into your Node.js application.
 const mongo = require('mongodb');
 ```
 
+How to run
+```bash
+node file_with_mongo.js
+```
+
 ## Creating Database
 
 Create a client and connect to database. The default port for MongoDB is 27017. 
