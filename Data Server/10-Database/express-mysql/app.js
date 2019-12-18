@@ -13,7 +13,8 @@ app.get('/',(req,res)=>{
 // connect 
 const db = mysql.createConnection({
     host    :  'localhost',
-    user    :  'root',
+    user    :  'admin',
+    password : 'root',
     database:  'mysqlDB'
 });
 db.connect((err)=> {
@@ -49,7 +50,7 @@ app.get('/createpoststable', (req,res)=>{
 
 // insert post 1 
 app.get('/addpost1',(req,res)=>{
-    let sql = "insert into posts (id , title , body) VALUES (NULL,'title 8 ', 'body of title 8') ";
+    let sql = "insert into posts (id , title , body) VALUES (NULL,'new title ', 'tuseday post') ";
     db.query( sql ,(err , result) => {
         if(err) throw err
         console.log(result);
