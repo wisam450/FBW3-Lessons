@@ -5,7 +5,7 @@ const url = "mongodb://localhost:27017/"
 // create a new collection "customers" in the database "mydb"
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    let mydb = db.db("mydb");
+    let mydb = db.db("mongoDB");
     mydb.createCollection("customers", function(err, res) {
         if (err) throw err;
         console.log("Collection created!");
@@ -16,7 +16,7 @@ MongoClient.connect(url, function(err, db) {
 // insert "google" and "facebook" into collection "customers"
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    let mydb = db.db("mydb");
+    let mydb = db.db("mongoDB");
     let myobj = {name: "google", address: "Silicon Valley"};
     mydb.collection("customers").insertOne(myobj, function(err, res) {
         if (err) throw err;
