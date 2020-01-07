@@ -3,6 +3,9 @@ const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const url = "mongodb://localhost:27017"
 
+// the atlas url on the cloud 
+const cloudUrl = "mongodb+srv://admin:Cm9haRRCrqL6pWFQ@cluster0-uwnlc.mongodb.net/test?retryWrites=true&w=majority";
+
 const app = express();
 app.listen(3006,()=>{
     console.log('Server started on port 3006');    
@@ -19,9 +22,7 @@ app.get('/all',(req,res)=>{
         myDatabase.collection('articles').find({}).toArray((err , result)=>{
             if(err) throw err;
            res.send(result); 
-           db.close();    
-
-
+           db.close();  
         })
     } )
 });
@@ -61,3 +62,73 @@ app.get('/add-users',(req,res)=>{
     })
     res.send('<h2> new user inserted </h2>');
 })
+
+
+// GETTING USERS FROM OUR DATABASE
+app.get('/users',(req,res)=>{
+    MongoClient.connect(url, (err,db) => {
+        if (err) throw err ;
+        let myDatabase = db.db('online-shop');
+        myDatabase.collection('users').find({}).toArray((err , result)=>{
+            if(err) throw err;
+           res.send(result); 
+           db.close();    
+
+
+        })
+    } )
+});
+
+// Delete all the users from online-shop
+app.get('/delete-all-users',(req, res)=>{
+ 
+MongoClient.connect(url , (err , db)=>{
+    if (err) throw err ;
+    let myDb = db.db('online-shop');
+    myDb.collection('users').deleteMany({name : "Romal"} , (err , result)=>{
+        if(err ) throw err ;
+        console.log('deleting users....');
+        res.send('<h3>'+ result.result.n + ' user are deleted</h3>');
+        db.close()
+
+    })
+
+})
+
+})
+
+// connect with atlas Cloud Database
+app.get('/cloud',(req , res ) => {
+
+    const client = new MongoClient(cloudUrl, { useNewUrlParser: true });
+    client.connect(err => {
+      const collection = client.db("shopDB").collection("articles");
+      
+      collection.find({}).toArray((err , result)=>{
+        if(err) throw err ;
+        console.log(result);
+        res.send(result);
+        client.close();      
+      });
+          
+    });
+});
+
+// add articles to the cloud Database 
+
+app.get('/insert-cloud',(req , res ) => {
+
+    const client = new MongoClient(cloudUrl, { useNewUrlParser: true });
+    client.connect(err => {
+      const collection = client.db("shopDB").collection("articles");
+      
+     
+      collection.insertMany( [{ name : "Samsung Galaxy s 11" , price: 1200 },{ name : "Htc one " , price: 600 } ] ,(err , result)=>{
+        if(err) throw err ;
+        res.send('<h3> new 2 articles inserted </h3> ') ;
+        client.close();
+
+    });
+          
+    });
+});
