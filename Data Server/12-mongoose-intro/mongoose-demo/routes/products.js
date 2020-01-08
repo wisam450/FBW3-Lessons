@@ -27,14 +27,12 @@ router.get('/:productId', async function (req, res, next) {
 
 // update info for a particular product
 // PUT http://localhost:3000/products/5e15bf6ce865442fc8748e2d?name='iPhone Y'&price=1000.0
-// curl -d "name='iPhone Y'&price=1000.0" -X PUT http://localhost:3000/products/5e15bf6ce865442fc8748e2d
 router.put('/:productId', async function (req, res, next) {
   // res.send(req.params.productId);
   let productId = req.params.productId;
-  let name = req.body.name;
-  let price = req.body.price;
-  console.log(name);
-  console.log(price);
+  let name = req.query.name;
+  let price = req.query.price;
+  console.log(req.query);
   try {
     const products = await Product.findByIdAndUpdate(productId,
       {
