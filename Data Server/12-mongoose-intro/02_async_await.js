@@ -45,6 +45,10 @@ db.once('open', async function() {
         const found_product_with_id = await Product.findById('5e15ad926397c82831374260');
         await console.log(JSON.stringify(found_product_with_id, null, 4));
 
+        const remove_products = await Product.remove();
+        await console.log(JSON.stringify(remove_products, null, 4));
+        console.log('Products removed');
+
     } catch (e) {
         console.error(e);
     }
