@@ -28,7 +28,13 @@ db.once('open', function() {
 
   console.log("finding all products");
   // find all
-  Product.find(function (err, products) {
+//   Product.find(function (err, products) {
+//     if (err) return console.error(err);
+//     console.log(JSON.stringify(products, null, 4)); // hot fix
+//     db.close();
+//   });
+
+  Product.find({name: /^Sam/}, function (err, products) {
     if (err) return console.error(err);
     console.log(JSON.stringify(products, null, 4)); // hot fix
     db.close();

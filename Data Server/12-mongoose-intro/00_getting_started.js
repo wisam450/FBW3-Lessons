@@ -45,4 +45,10 @@ db.once('open', function() {
         db.close();
     });
 
+    Product.find({name: /^Sam/}, function (err, products) {
+        if (err) return console.error(err);
+        console.log(JSON.stringify(products, null, 4)); // hot fix
+        db.close();
+      });
+
 });
