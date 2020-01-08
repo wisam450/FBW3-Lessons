@@ -13,4 +13,27 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+// GET http://localhost:3000/products/5e15bf6ce865442fc8748e2d
+router.get('/:productId', async function(req, res, next) {
+  // res.send(req.params.productId);
+  let productId = req.params.productId;
+  try {
+    const products = await Product.findById(productId);
+    res.status(200).send(products); 
+  } catch (e) {
+    next(e);
+  }
+});
+
+// PUT http://localhost:3000/products/5e15bf6ce865442fc8748e2d?name=
+router.put('/:productId', async function(req, res, next) {
+  // res.send(req.params.productId);
+  let productId = req.params.productId;
+  try {
+    const products = await Product.findByIdAndUpdate();
+    res.status(200).send(products); 
+  } catch (e) {
+    next(e);
+  }
+
 module.exports = router;
