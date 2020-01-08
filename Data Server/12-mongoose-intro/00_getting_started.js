@@ -6,6 +6,12 @@ let productSchema = new mongoose.Schema({
     price: Number
 });
 
+// a class method for log messaging
+productSchema.methods.logMessage = function () {
+    let msg = `The product ${this.name} with the price ${this.price} has been inserted`;
+    console.log(msg);
+};
+
 let Product = mongoose.model('Product', productSchema);
 
 let samsung = new Product({ name: 'Samsung Galaxy One', price: 399.99});
@@ -26,14 +32,16 @@ db.once('open', function() {
     // save samsung here
     samsung.save(function (err, samsung) {
         if (err) return console.error(err);
-        console.log('samsung saved!');
+        // console.log('samsung saved!');
+        samsung.logMessage();
         db.close();
     });
 
     // save apple here
     apple.save(function (err, apple) {
         if (err) return console.error(err);
-        console.log('apple saved!');
+        // console.log('apple saved!');
+        apple.logMessage();
         db.close();
     });
 
