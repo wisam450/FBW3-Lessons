@@ -2,13 +2,36 @@
 const Bootcamp = require('../models/Bootcamp');
 
 // get all the bootcamps without id 
-exports.getBootcamps = (req ,res , next) => {
-    res.status(200).json({ success : true , msg : ' Show all bootcamps' , hello:req.hello , host:req.info});
+exports.getBootcamps = async (req ,res , next) => {
+    //res.status(200).json({ success : true , msg : ' Show all bootcamps' , hello:req.hello , host:req.info});
+    try {
+        const bootcamp = await Bootcamp.find();
+        res.status(200).json({success : true , data:bootcamp});
+
+    }
+    catch(err){
+        res.status(400).json({ success : false })
+
+    }
 }
 
 // get a single bootcamp using id 
-exports.getBootcamp = (req ,res , next) => {
-    res.status(200).json({ success : true , msg : ` Show  bootcamps ${req.params.id}`});
+exports.getBootcamp = async (req ,res , next) => {    
+   // res.status(200).json({ success : true , msg : ` Show  bootcamps ${req.params.id}`});
+   try {
+    const bootcamp = await Bootcamp.findById(req.params.id);
+    if(!bootcamp){
+        res.status(400).json({ success: false});
+    }
+    res.status(200).json({ success : true , data : bootcamp});
+
+   }catch(err){
+    res.status(400).json({ success : false });
+
+   }
+   
+
+
 }
 
 
@@ -25,9 +48,23 @@ exports.createBootcamp = async (req , res ,next) => {
 
     }
 }
+// update a bootcamp 
+exports.updateBootcamp = async (req,res , next) => {
+   // res.status(200).json({ success : true , msg : ` Update  bootcamps ${req.params.id}`});
+  try {
+      const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id ,req.body , {
+        new : true ,
+        runValidators : true  
+      }) ;
+      if(!bootcamp){
+          res.status(400).json({ success : false })
+      }
+      res.status(200).json({ success : true , data : bootcamp});
 
-exports.updateBootcamp = (req,res , next) => {
-    res.status(200).json({ success : true , msg : ` Update  bootcamps ${req.params.id}`});
+  }catch{
+    res.status(400).json( { success : false})
+
+  }
 
 
 }
