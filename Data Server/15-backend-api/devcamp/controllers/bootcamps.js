@@ -57,19 +57,31 @@ exports.updateBootcamp = async (req,res , next) => {
         runValidators : true  
       }) ;
       if(!bootcamp){
-          res.status(400).json({ success : false })
+         return  res.status(400).json({ success : false })
       }
       res.status(200).json({ success : true , data : bootcamp});
 
-  }catch{
-    res.status(400).json( { success : false})
+  }catch(err){
+   return   res.status(400).json( { success : false})
 
   }
 
 
 }
 
-exports.deleteBootcamp =(req , res , next)=>{
-    res.status(200).json({ success : true , msg : ` delete  bootcamps ${req.params.id}`});
+exports.deleteBootcamp =async (req , res , next)=>{
+   // res.status(200).json({ success : true , msg : ` delete  bootcamps ${req.params.id}`});
+   try{
+    const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
+    if(!bootcamp){
+        return res.status(400).json({ success : false , msg : " id not found "});
+    }
+    res.status(200).json({ success : true , data : {} });
+
+   }
+   catch(err){
+     return  res.status(400).json({success : false});
+
+   }
 
 }
