@@ -4,7 +4,8 @@ const ejs = require('ejs')
 const app = express();
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
-
+const flash = require('connect-flash');
+const session = require('express-session');
 // load env variables 
 dotenv.config({path : './config/config.env'});
 
@@ -15,7 +16,27 @@ app.use(expressLayouts);
 app.set('view engine' , 'ejs' )
 
 // Body parser
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+
+// express session 
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true   
+  }))
+
+  // Connect Flash
+  app.use(flash());
+
+ // Global Variables 
+app.use((req, res , next) => {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+} )
+
+
 // Routes 
 app.use('/' , require('./routes/index'));
 app.use('/users' ,require('./routes/users'));
