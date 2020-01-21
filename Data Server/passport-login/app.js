@@ -6,6 +6,10 @@ const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+
+// passport config 
+require('./config/passport')(passport)
 // load env variables 
 dotenv.config({path : './config/config.env'});
 
@@ -23,7 +27,11 @@ app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true   
-  }))
+  }));
+
+  // passport Middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // Connect Flash
   app.use(flash());
