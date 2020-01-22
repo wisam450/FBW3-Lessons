@@ -10,14 +10,21 @@ router.post('/', [
   check('dateofbirth').isISO8601(),
   check('age').isInt({min: 18, max: 120}),
   check('mobile').isMobilePhone('de-DE'),
-  check('plz').isPostalCode('DE')
+  check('plz').isPostalCode('DE'),
+  check('card').isCreditCard(),
+  check('price').isCurrency({symbol: '$'}),
+  check('ip').isIP(),
+  check('url').isURL(),
+  // how to make a custom message
+  check('text').trim().not().isEmpty().withMessage('It is rejected because it is empty...'),
+  check('email').trim().normalizeEmail().isEmail()
 ], function(req, res, next) {
   console.log(req.body);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({errors: errors.array()});
   }
-  res.status(200).send('accepted!');
+  res.status(200).json({req: req.body});
   // res.send('respond with a resource');
 });
 
