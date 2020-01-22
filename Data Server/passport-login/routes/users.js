@@ -48,11 +48,12 @@ router.post('/register', [
 
     console.log(req.body);
     // if there are errors ?
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+    const check_errors = validationResult(req);
+    if (!check_errors.isEmpty()) {
+        return res.status(422).json({ errors: check_errors.array() });
     } 
    else {
+       let errors = [];
        // validation passed
        User.findOne({email :email })
        .then(data => {
