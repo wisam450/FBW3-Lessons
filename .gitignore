@@ -2,6 +2,7 @@
 node_modules
 logo.svg
 favicon.ico
+config.env
 
 
 
