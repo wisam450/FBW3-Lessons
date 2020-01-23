@@ -33,7 +33,7 @@ const verifyPasswordsMatch = (req, res, next) => {
 router.post('/register', [
     // our checks here
     check('name').trim().not().isEmpty().withMessage('name is empty'),
-    check('email').trim().normalizeEmail().isEmail().withMessage('email incorrect'),
+    check('email').trim().isEmail().withMessage('email incorrect'),
     check('password').isLength({ min: 6 }).withMessage('password is to short'),
     // check('password2').equals('password').withMessage('passwords are not equal')
     // verifyPasswordsMatch,
@@ -50,11 +50,29 @@ router.post('/register', [
     console.log(req.body);
     // if there are errors ?
     const check_errors = validationResult(req);
+    let errors = [];
     if (!check_errors.isEmpty()) {
-        return res.status(422).json({ errors: check_errors.array() });
+       // return res.status(422).json({ errors: check_errors.array() });
+       console.log(check_errors.array());      
+       check_errors.array().forEach((item)=> {
+           errors.push(item);
+
+       });
+       console.log('errors : ',errors);
+       if(errors.length > 0){
+        res.render('register' , {
+            errors,
+            name,
+            email,
+            password,
+            password2
+        })
+    }
+       
+       
     } 
     else {
-       let errors = [];
+      
        // validation passed
        User.findOne({email :email })
        .then(data => {
