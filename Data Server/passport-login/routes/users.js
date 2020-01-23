@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { body, check, validationResult } = require('express-validator');
 
 
 // User model 
@@ -18,6 +19,7 @@ router.get('/register', (req , res ) => {
 });
 
 // Rigister Handle 
+<<<<<<< HEAD
 router.post('/register' ,(req , res )=>{
    const { name, email, password, password2 }     = req.body;
    let errors = [];
@@ -43,7 +45,43 @@ router.post('/register' ,(req , res )=>{
            password2
        })
    }
+
+const verifyPasswordsMatch = (req, res, next) => {
+    const { password2 } = req.body;
+
+    return check('password')
+      .isLength({ min: 6 })
+      .withMessage('password must be at least 4 characters')
+      .equals(password2)
+      // .withMessage('passwords do not match')
+}
+
+router.post('/register', [
+    // our checks here
+    check('name').trim().not().isEmpty().withMessage('name is empty'),
+    check('email').trim().normalizeEmail().isEmail().withMessage('email incorrect'),
+    check('password').isLength({ min: 6 }).withMessage('password is to short'),
+    // check('password2').equals('password').withMessage('passwords are not equal')
+    // verifyPasswordsMatch,
+    body('password').custom((value, { req }) => {
+        if (value !== req.body.password2) {
+          throw new Error('Password confirmation does not match password');
+        }
+        // Indicates the success of this synchronous custom validator
+        return true;
+      }),
+], (req, res) => {
+    const { name, email, password, password2 } = req.body;
+
+    console.log(req.body);
+    // if there are errors ?
+    const check_errors = validationResult(req);
+    if (!check_errors.isEmpty()) {
+        return res.status(422).json({ errors: check_errors.array() });
+    } 
+>>>>>>> d0237af4e431f56b34aa682e34eedd32f8d614e1
    else {
+       let errors = [];
        // validation passed
        User.findOne({email :email })
        .then(data => {
@@ -99,7 +137,7 @@ router.post('/register' ,(req , res )=>{
 
 
 
-})
+});
 
 // login Handle 
 router.post('/login' , (req,res,next)=>{

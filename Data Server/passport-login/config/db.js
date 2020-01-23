@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const colors = require('colors')
 const connectDB = async () =>{
-    const conn = await mongoose.connect(process.env.MONGO_URI , {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI , {
 
         useNewUrlParser : true,
         useCreateIndex : true,
@@ -10,8 +11,10 @@ const connectDB = async () =>{
 
     });
     console.log(` MongoDB connected : ${conn.connection.host}` .cyan.underline.bold);
-    
-}
+    } catch (e) {
+        return console.log("Is not connected");
+    }  
+};
 
 module.exports = connectDB;
 
