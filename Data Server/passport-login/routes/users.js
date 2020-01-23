@@ -53,8 +53,7 @@ router.post('/register', [
     if (!check_errors.isEmpty()) {
         return res.status(422).json({ errors: check_errors.array() });
     } 
->>>>>>> d0237af4e431f56b34aa682e34eedd32f8d614e1
-   else {
+    else {
        let errors = [];
        // validation passed
        User.findOne({email :email })
