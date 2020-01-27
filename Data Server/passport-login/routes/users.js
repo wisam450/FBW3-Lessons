@@ -67,7 +67,7 @@ router.post('/register', [
             password,
             password2
         })
-    }
+       }
        
        
     } 
