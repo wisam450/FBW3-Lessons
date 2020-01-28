@@ -24,7 +24,8 @@ app.post('/api/posts' ,verifyToken ,(req , res )=> {
         }
         else {
             res.json({ 
-                message : ' Data created .... '
+                message : ' Data created .... ',
+                authData
             });
 
         }
