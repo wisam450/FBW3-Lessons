@@ -7,12 +7,15 @@ const dotenv = require('dotenv');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const cookieParser = require('cookie-parser')
 
-// passport config 
-require('./config/passport')(passport)
+
+
 // load env variables 
 dotenv.config({path : './config/config.env'});
 
+// passport config 
+require('./config/passport')(passport)
 // connect to MongoDB database
 connectDB();
 // EJS 
@@ -21,6 +24,7 @@ app.set('view engine' , 'ejs' )
 
 // Body parser
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 
 // express session 
 app.use(session({
