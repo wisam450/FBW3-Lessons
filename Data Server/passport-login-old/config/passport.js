@@ -2,6 +2,9 @@ const LocalStrategy  = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+
+
+
 // Load User Model
 const User = require('../models/User');
 
@@ -18,7 +21,7 @@ module.exports = (passport)=>{
                 bcrypt.compare(password ,userData.password ,(err , isMatch) => {
                     if(err) throw err;
 
-                    if(isMatch){
+                    if(isMatch){                        
                         return done(null,userData)
 
                     }

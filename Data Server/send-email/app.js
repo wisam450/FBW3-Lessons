@@ -51,7 +51,7 @@ const output = `
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'dci@hamburg-coders.pro', // generated ethereal user
-      pass: 'abc1234' // generated ethereal password
+      pass: 'ABC1234' // generated ethereal password
     },
     tls:{
         rejectUnauthorized:false

@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, check, validationResult } = require('express-validator');
+const mailer = require('../config/sendEmail');
+const authController = require('../config/auth');
 
 
 // User model 
@@ -16,6 +18,11 @@ router.get('/login', (req , res ) => {
 // Register Page 
 router.get('/register', (req , res ) => {
     res.render('register')
+});
+
+// forgotPassword Page 
+router.get('/forgotPassword', (req , res ) => {
+    res.render('forgotPassword')
 });
 
 // Rigister Handle 
@@ -104,6 +111,7 @@ router.post('/register', [
                        // save the user data to our database
                        newUser.save()
                        .then(user => {
+                           mailer(email);
                            req.flash('success_msg', 'You are registered and you can login')
                            res.redirect('/users/login');
 
@@ -147,6 +155,60 @@ router.post('/login' , (req,res,next)=>{
      req.flash('success_msg' , 'You are logged out ');
      res.redirect('/users/login');
 
- })
+ });
+
+ // Forgot password Handle 
+ router.post('/forgotPassword' ,  (req, res, next)=>{
+    // 1- get user based on Posted Email 
+    const email = req.body.email; 
+    
+    let errors = [];
+    User.findOne({email :email })
+    .then(data => {
+        if(data){ // we found the email in our database
+            //const resetToken = User.createPasswordResetToken();
+           // console.log(resetToken);
+           
+           
+                    
+        }
+        else {
+            console.log(data)
+            errors.push({ msg : ' Email is not registered'});
+            res.render('forgotPassword' ,{ 
+                errors,
+               
+                email,
+                
+            })      
+
+      
+
+
+
+        }
+
+    });
+
+     
+
+
+    // const user =   User.findOne({email : req.body.email})
+    // console.log(User.findOne({email : req.body.email}))
+    // if(!user){
+    //    // return next(('there is no user with that email address',404))
+    //    res.send('error')
+    // }
+
+    // // 2- genertate the random reset token
+    // const resetToken = User.createPasswordResetToken();
+    //   user.save() 
+
+    // // 3- send it to user's email 
+
+},);
+ router.post('/resetPassword' , authController.resetPassword);
+
+
 
 module.exports = router;
