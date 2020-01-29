@@ -32,10 +32,55 @@ router.get("/profile",
       });
     }
   );
+ 
+  // Forgot Password 
+  router.get('/forgotPassword' , (req , res )=> {
+      res.render('forgotPassword');
 
+  })
+ // reset Password  
+ router.post('/forgotPassword', (req, res , next) => {
+     // 1- get the user from the DB using the email
+     const email = req.body.email;
+     let errors = [];
+     User.findOne({email : email})
+     .then(data =>{
+         if(data){
+             console.log('we found the Email in our database ');
+         }
+         else {
+             errors.push({
+                 msg: 'Email is not registered'
+             })
+             res.render('forgotPassword' , {
+                 errors,
+                 email
+             })
+         }
+     } )
+
+ })
+   
 
   // update profile 
-  
+   
+
+  router.post('/profile', 
+passport.authenticate('jwt',{session:false,failureRedirect: '/users/login',failureFlash : true}), 
+(req , res ) => {
+    console.log(req.user);
+    console.log(req.body);
+    const newData = {
+        "id":req.body.id,
+        "email" : req.body.email,
+        "password": req.body.password
+    }
+
+    User.findByIdAndUpdate(req.user._id ,newData)
+    res.render('profile' ,{
+        user : req.user
+    })
+})
 // Rigister Handle 
 
 const verifyPasswordsMatch = (req, res, next) => {
