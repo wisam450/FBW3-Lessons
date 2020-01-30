@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const sendEmail = require('../config/sendEmail');
+const crypto = require('crypto');
+
 
 
 // User model 
@@ -48,7 +51,7 @@ router.get("/profile",
          errors.push({
              msg : "Email is not registered"
          });
-         res.render('forgotPassword' , {
+      return res.render('forgotPassword' , {
              errors,
              email
          })
@@ -57,7 +60,135 @@ router.get("/profile",
      console.log(user);     
      const resetToken = user.createPasswordResetToken(); 
      await user.save()
+
+     // 3- send the resetToken to the user's Email 
+     const resetUrl = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetToken}`
+     const message = ` Forget your password ? click on the link and submit your new password 
+     and password confirmation to ${resetUrl} \n \n if you didn't forget your password please ignore
+     this enail  `;
+     try{
+        await sendEmail({
+            email: user.email,
+            subject : ' Your password reset Token (valid for 10 minutes)',
+            message,
+            resetUrl
+   
+        });
+        res.status(200).json({
+            status : 'Success',
+            message : 'Token sent to your email'
+   
+        });
+
+     }
+     catch{
+         user.passwordResetToken = undefined;
+         user.passwordResetExpire = undefined;
+         await user.save();
+         return next(new Error (' there was an error by sending the email try again later !'))
+
+     }
+      
+ })
+
+ // reset password handle 
+ router.get('/resetPassword/:token' ,async (req , res , next) => {
+     // 1- get the user based on the token
+      const hashedToken = crypto.createHash('sha256').update(req.params.token)
+      .digest('hex')
+      const user = await User.findOne({passwordResetToken : hashedToken 
+    ,passwordResetExpire : {$gt : Date.now() }})
+    if(!user){
+        return next(new Error('Token is invalid or has expired' , 400))
+    }
+    //2- if the token has not expired and there is user , set new password
+    // res.status(200).json({
+    //     message : ' Your token is correct you can change your password'
+    // })
+    res.render('resetPassword',{
+        token : req.params.token
+    });
+      
+     // 3- update passwordChangedAt for the user
+     // 4 - log the user in  
+ }) 
+
+ // reset Password POST
+ router.post('/resetPassword',[
+    check('password').isLength({ min: 6 }).withMessage('password is to short'),
+    body('password').custom((value, { req }) => {
+        if (value !== req.body.password2) {
+          throw new Error('Password confirmation does not match password');
+        }         
+        return true;
+      }),  
+
+ ],async (req,res , next)=>{
+    const {  password, password2 , token } = req.body;
     
+    
+    const check_errors = validationResult(req);
+    console.log(check_errors.array()); 
+     // if there are errors ?     
+     let errors = [];
+     if (!check_errors.isEmpty()) {       
+        console.log(check_errors.array());      
+        check_errors.array().forEach((item)=> {
+            errors.push(item);
+ 
+        });
+         
+        if(errors.length > 0){
+         return res.render('resetPassword' , {
+             errors,             
+             password,
+             password2,             
+             token
+         })
+     }
+    }
+    else {
+        // no errors we can update the password
+        const hashedToken = crypto.createHash('sha256').update(token)
+        .digest('hex')
+        const user = await User.findOne({passwordResetToken : hashedToken 
+      ,passwordResetExpire : {$gt : Date.now() }})
+      if(!user){
+          return next(new Error('Token is invalid or has expired you made mistake' , 400))
+      }
+      try {
+               // Hash Password
+               bcrypt.genSalt(10 ,(err , salt) => {
+                bcrypt.hash(password ,salt ,async (err , hash) => {
+                    if(err) throw err ;
+
+                    // set hashed password
+                    user.password = hash ;
+                    user.passwordResetToken = undefined;
+                    user.passwordResetExpire= undefined;
+                    user.passwordChangedAt = Date.now();
+                     await user.save();                    
+                        req.flash('success_msg', 'your Password is changed and you can Login')
+                        res.redirect('/users/login');                    
+                    
+
+                } )
+
+
+            })
+
+
+      }
+      catch{
+          return next(new Error(' there was an error by saving the new password'))
+
+      }
+
+
+
+    }
+    
+     
 
  })
    
@@ -88,9 +219,9 @@ const verifyPasswordsMatch = (req, res, next) => {
 
     return check('password')
       .isLength({ min: 6 })
-      .withMessage('password must be at least 4 characters')
+      .withMessage('password must be at least 6 characters')
       .equals(password2)
-      // .withMessage('passwords do not match')
+      .withMessage('passwords do not match')
 }
 
 router.post('/register', [
