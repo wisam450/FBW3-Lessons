@@ -39,25 +39,25 @@ router.get("/profile",
 
   })
  // reset Password  
- router.post('/forgotPassword', (req, res , next) => {
+ router.post('/forgotPassword', async(req, res , next) => {
      // 1- get the user from the DB using the email
      const email = req.body.email;
      let errors = [];
-     User.findOne({email : email})
-     .then(data =>{
-         if(data){
-             console.log('we found the Email in our database ');
-         }
-         else {
-             errors.push({
-                 msg: 'Email is not registered'
-             })
-             res.render('forgotPassword' , {
-                 errors,
-                 email
-             })
-         }
-     } )
+     const user = await User.findOne({ email :email  });
+     if(!user){
+         errors.push({
+             msg : "Email is not registered"
+         });
+         res.render('forgotPassword' , {
+             errors,
+             email
+         })
+     }
+     // 2- generate the random reset Token
+     console.log(user);     
+     const resetToken = user.createPasswordResetToken(); 
+     await user.save()
+    
 
  })
    
