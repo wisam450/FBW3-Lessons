@@ -74,11 +74,8 @@ router.get("/profile",
             resetUrl
    
         });
-        res.status(200).json({
-            status : 'Success',
-            message : 'Token sent to your email'
-   
-        });
+        req.flash('success_msg', 'your receved an email to change your password')
+        res.redirect('/users/login'); 
 
      }
      catch{
