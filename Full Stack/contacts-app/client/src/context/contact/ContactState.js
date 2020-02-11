@@ -1,69 +1,91 @@
-import React  , { useReducer } from 'react';
+import React, { useReducer } from 'react';
 import uuid from 'uuid';
 import contactContext from './contactContext';
 import contactReducer from './contactReducer';
-import { 
+import {
     ADD_CONTACT,
     UPDATE_CONTACT,
     DELETE_CONTACT,
     FILTER_CONTACT,
     SET_ALERT,
-    REMOVE_ALERT
+    REMOVE_ALERT,
+    SET_CURRENT,
+    CLEAR_CURRENT
 
- } from "../types";
+} from "../types";
 
- const ContactState = (props)=> {
-     const initialState = {
-         contacts: [
-             {
-                 id: 1,
-                 name:'Romal Smith',
-                 email:'romal@gmail.com',
-                 phone:'015-111-111',
-                 type:'personal'
-             },
-             {
+const ContactState = (props) => {
+    const initialState = {
+        contacts: [
+            {
+                id: 1,
+                name: 'Romal Smith',
+                email: 'romal@gmail.com',
+                phone: '015-111-111',
+                type: 'personal'
+            },
+            {
                 id: 2,
-                name:'John Smith',
-                email:'john@gmail.com',
-                phone:'015-222-222',
-                type:'buisness'
+                name: 'John Smith',
+                email: 'john@gmail.com',
+                phone: '015-222-222',
+                type: 'business'
             },
             {
                 id: 3,
-                name:'Ali',
-                email:'ali@gmail.com',
-                phone:'015-333-333',
-                type:'personal'
+                name: 'Ali',
+                email: 'ali@gmail.com',
+                phone: '015-333-333',
+                type: 'personal'
             },
             {
                 id: 4,
-                name:'Franco',
-                email:'franco@gmail.com',
-                phone:'015-444-444',
-                type:'buisness'
+                name: 'Franco',
+                email: 'franco@gmail.com',
+                phone: '015-444-444',
+                type: 'business'
             }
-         ]
-     };
-     const [state , dispatch ] = useReducer(contactReducer,initialState);
-     // ADD_CONTACT
-     const addContact = (contact) => {
-         contact.id = uuid.v4();
-         dispatch({type : ADD_CONTACT , payload : contact })
+        ],
+        current:null
+    };
+    const [state, dispatch] = useReducer(contactReducer, initialState);
+    // ADD_CONTACT
+    const addContact = (contact) => {
+        contact.id = uuid.v4();
+        dispatch({ type: ADD_CONTACT, payload: contact })
 
-     }
+    };
+    // Update
+    const updateContact = (contact) => {
+        
+        dispatch({ type: UPDATE_CONTACT, payload: contact })
 
-     // DELETE CONTACTS 
+    }; 
 
-     // Set Current Contact
 
-     // Update 
+    // DELETE CONTACTS 
+    const deleteContact = (id) => {
+       
+        dispatch({ type: DELETE_CONTACT, payload: id })
 
-     // Filter 
+    }
 
+    // Set Current Contact
+    const setCurrent = (contact) => {
+       
+        dispatch({ type: SET_CURRENT, payload: contact })
+
+    }
+    // Clear Current Contact
+    const clearCurrent = (contact) => {
+       
+        dispatch({ type: CLEAR_CURRENT })
+
+    }
 
     
 
+    // Filter 
 
 
 
@@ -72,24 +94,29 @@ import {
 
 
 
-     return (
-         <contactContext.Provider  
-         
-         value={{
-                 contacts:state.contacts
-             }}
-         >
-         
-       
-         
-           
-         
-            
-             {props.children}
-         </contactContext.Provider>
-     )
 
 
- }
 
- export default ContactState;
+
+    return (
+        <contactContext.Provider
+
+            value={{
+                contacts: state.contacts,
+                current: state.current,
+                addContact,
+                deleteContact,
+                setCurrent,
+                clearCurrent,
+                updateContact
+
+            }}
+        >
+            {props.children}
+        </contactContext.Provider>
+    )
+
+
+}
+
+export default ContactState;
